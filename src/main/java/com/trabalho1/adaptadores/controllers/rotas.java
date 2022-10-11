@@ -36,5 +36,5 @@ public class rotas {
     @RequestMapping("/gerarRelatorioOcupacao")
     public String gerarRelatorioOcupacao() {
         return "gerarRelatorioOcupacao";
-    }
+    }    
 }
