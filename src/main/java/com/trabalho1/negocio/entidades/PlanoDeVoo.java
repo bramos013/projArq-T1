@@ -1,9 +1,10 @@
 package com.trabalho1.negocio.entidades;
 
 import java.time.Instant;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class PlanoDeVoo {
@@ -11,8 +12,15 @@ public class PlanoDeVoo {
     private String idVoo;
     private Instant data;
     private float altitude;
-    private Rota rota;
     private float velCruzeiro;
+
+    // Associação - 1 plano de voo corresponde a 1 aeronave
+    @OneToOne
+    private Aeronave aeronave;
+    // Associação - 1 plano de voo utiliza 1 rota, 1 rota pode ser utilizada por N planos de voos
+    @ManyToOne
+    private Rota rota;
+
 
     public PlanoDeVoo(String idVoo, Instant data, float altitude, Rota rota, float velCruzeiro) {
         this.idVoo = idVoo;

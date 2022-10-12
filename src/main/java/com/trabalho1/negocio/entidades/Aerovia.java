@@ -1,7 +1,11 @@
 package com.trabalho1.negocio.entidades;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Aerovia {
@@ -10,6 +14,11 @@ public class Aerovia {
     private RefGeo origem;
     private RefGeo destino;
     private float distancia;
+
+    // Associação - 1 rota pode utilizar N aerovias, 1 aerovia pode ser utilizada por N rotas
+    @OneToMany(mappedBy = "id.aerovia")
+    private Set<RotaAerovia> rotasAerovias = new HashSet<>();
+
 
     public Aerovia(String nome, RefGeo origem, RefGeo destino, float distancia) {
         this.nome = nome;

@@ -2,6 +2,7 @@ package com.trabalho1.negocio.entidades;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Aeronave {
@@ -9,6 +10,10 @@ public class Aeronave {
     private String prefixo;
     private int autonomia;
     private int velocidadeCruzeiro;
+
+    // Associação - 1 aeronave possui 1 plano de voo
+    @OneToOne
+    private PlanoDeVoo planoDeVoo;
 
     public Aeronave(String prefixo, int autonomia, int velocidadeCruzeiro) {
         this.prefixo = prefixo;
