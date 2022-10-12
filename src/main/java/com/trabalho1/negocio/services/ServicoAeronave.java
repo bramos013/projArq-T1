@@ -11,25 +11,29 @@ import com.trabalho1.negocio.repositorios.IAeronaveRepository;
 public class ServicoAeronave {
     public IAeronaveRepository aeronaveRep;
 
-    public ServicoAeronave(IAeronaveRepository aeronaveRep){
+    public ServicoAeronave(IAeronaveRepository aeronaveRep) {
         this.aeronaveRep = aeronaveRep;
     }
 
-    public void cadastraAeronave(Aeronave aeronave){
+    public void cadastra(Aeronave aeronave) {
         aeronaveRep.removeTodas();
         aeronaveRep.cadastra(aeronave);
     }
 
-    public List<Aeronave> listarTodas(){
-        return aeronaveRep.listarTodas();
+    public void remove(String prefixo) {
+        aeronaveRep.remove(prefixo);
     }
 
-    public void removeTodas(){
+    public void removeTodas() {
         aeronaveRep.removeTodas();
-}
+    }
 
-public Aeronave removeAeronave(){
-        aeronaveRep.removeAeronave();
-}
+    public Aeronave listarAeronave(String prefixo) {
+        return aeronaveRep.listarAeronave(prefixo);
+    }
+
+    public List<Aeronave> listarTodas() {
+        return aeronaveRep.listarTodas();
+    }
 
 }

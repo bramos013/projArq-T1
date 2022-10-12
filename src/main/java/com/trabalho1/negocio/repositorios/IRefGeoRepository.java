@@ -1,42 +1,16 @@
 package com.trabalho1.negocio.repositorios;
 
+import java.util.List;
 import com.trabalho1.negocio.entidades.RefGeo;
 
-import java.util.List;
-import org.springframework.stereotype.Component;
+public interface IRefGeoRepository {
+    void cadastra(RefGeo refGeo);
 
-public class IRefGeoRepository {
-    @Component
-    public class ServicoRefGeo {
-        public IRefGeoRepository refGeoRep;
-    
-        public ServicoRefGeo(IRefGeoRepository refGeoRep){
-            this.refGeoRep = refGeoRep;
-        }
-    
-        public void cadastraAeronave(RefGeo refGeo){
-            refGeoRep.removeTodas();
-            refGeoRep.cadastra(aerovia);
-        }
-    
-        public List<Aerovia> listarTodas(){
-            return refGeoRep.listarTodas();
-        }
-    
-        public void removeTodas(){
-            refGeoRep.removeTodas();
-        }
-    
-    }
+    void remove(String nome);
 
+    void removeTodas();
 
-
+    RefGeo listarRefGeo(String nome);
 
     List<RefGeo> listarTodas();
-    RefGeo listarRefGeo(String nome);
-    void removeRefGeo(String nome);
-    void acrescentaRefGeo(RefGeo refGeo);
-
 }
-
-

@@ -64,7 +64,11 @@ public class Aeronave {
             return false;
         return true;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Aeronave [prefixo=" + prefixo + ", autonomia=" + autonomia + ", velocidadeCruzeiro="
+                + velocidadeCruzeiro + "]";
+    }
 
 }

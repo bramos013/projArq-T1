@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RestController
-public class rotas {
-    
+public class Routes {
+
     @RequestMapping("/consultarRota")
     public String consultarRota() {
         return "consultarRota";
@@ -32,9 +32,9 @@ public class rotas {
     public String cancelarPlanoVoo() {
         return "cancelarPlanoVoo";
     }
-    
+
     @RequestMapping("/gerarRelatorioOcupacao")
     public String gerarRelatorioOcupacao() {
         return "gerarRelatorioOcupacao";
-    }    
+    }
 }
