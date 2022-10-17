@@ -12,6 +12,6 @@ public interface IAeroviaRepository {
 
     Aerovia listarAerovia(String nome);
 
-    List<Aerovia> listarTodas();
+    //List<Aerovia> listarTodas();
 
 }

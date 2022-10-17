@@ -21,9 +21,9 @@ public class ServicoAerovia {
         aeroviaRep.cadastra(aerovia);
     }
 
-    public List<Aerovia> listarTodas(){
-        return aeroviaRep.listarTodas();
-    }
+    // public List<Aerovia> listarTodas(){
+    //     return aeroviaRep.listarTodas();
+    // }
 
     public void removeTodas(){
         aeroviaRep.removeTodas();

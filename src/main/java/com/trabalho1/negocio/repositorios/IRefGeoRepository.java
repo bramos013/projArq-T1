@@ -4,13 +4,13 @@ import java.util.List;
 import com.trabalho1.negocio.entidades.RefGeo;
 
 public interface IRefGeoRepository {
-    void cadastra(RefGeo refGeo);
+    boolean cadastra(RefGeo refGeo);
 
-    void remove(String nome);
+    boolean remove(String nome);
 
-    void removeTodas();
+    boolean removeTodas();
 
     RefGeo listarRefGeo(String nome);
 
-    List<RefGeo> listarTodas();
+    //List<RefGeo> listarTodas();
 }

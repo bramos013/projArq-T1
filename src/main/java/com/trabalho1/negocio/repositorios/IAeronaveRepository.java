@@ -1,17 +1,16 @@
 package com.trabalho1.negocio.repositorios;
 
-import java.util.List;
 import com.trabalho1.negocio.entidades.Aeronave;
 
 public interface IAeronaveRepository {
-    void cadastra(Aeronave aeronave);
+    boolean cadastra(Aeronave aeronave);
 
-    void remove(String nome);
+    boolean remove(String nome);
 
-    void removeTodas();
+    boolean removeTodas();
 
     Aeronave listarAeronave(String prefixo);
 
-    List<Aeronave> listarTodas();
+    // List<Aeronave> listarTodas();
 
 }

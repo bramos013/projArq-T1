@@ -7,10 +7,10 @@ import javax.persistence.Id;
 public class RefGeo {
         @Id
         private String nome;
-        private float latitude;
-        private float longitude;
+        private double latitude;
+        private double longitude;
 
-        public void Aerovia(String nome, float latitude, float longitude) {
+        public RefGeo(String nome, double latitude, double longitude) {
                 this.nome = nome;
                 this.latitude = latitude;
                 this.longitude = longitude;
@@ -24,19 +24,19 @@ public class RefGeo {
                 this.nome = nome;
         }
 
-        public float getLatitude() {
+        public double getLatitude() {
                 return latitude;
         }
 
-        public void setLatitude(float latitude) {
+        public void setLatitude(double latitude) {
                 this.latitude = latitude;
         }
 
-        public float getLongitude() {
+        public double getLongitude() {
                 return longitude;
         }
 
-        public void setLongitude(float longitude) {
+        public void setLongitude(double longitude) {
                 this.longitude = longitude;
         }
 

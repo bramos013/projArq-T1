@@ -29,7 +29,7 @@ public class ServicoRefGeo {
         return refGeoRep.listarRefGeo(nome);
     }
 
-    public List<RefGeo> listarTodas() {
-        return refGeoRep.listarTodas();
-    }
+    // public List<RefGeo> listarTodas() {
+    //     return refGeoRep.listarTodas();
+    // }
 }

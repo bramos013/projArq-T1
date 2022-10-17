@@ -32,8 +32,8 @@ public class ServicoAeronave {
         return aeronaveRep.listarAeronave(prefixo);
     }
 
-    public List<Aeronave> listarTodas() {
-        return aeronaveRep.listarTodas();
-    }
+    // public List<Aeronave> listarTodas() {
+    //     return aeronaveRep.listarTodas();
+    // }
 
 }
