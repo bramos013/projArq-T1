@@ -2,15 +2,18 @@ package com.trabalho1.negocio.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.trabalho1.negocio.entidades.Rota;
 import com.trabalho1.negocio.repositorios.IRotaRepository;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class ServicoRota {
     public IRotaRepository rotaRep;
 
+    @Autowired
     public ServicoRota(IRotaRepository rotaRep) {
         this.rotaRep = rotaRep;
     }
@@ -45,6 +48,10 @@ public class ServicoRota {
             return true;
         }
         return false;
+    }
+
+    public List<Rota> findAll() {
+        return this.rotaRep.findAll();
     }
     
     public void saveAll(List<Rota> rotas) {

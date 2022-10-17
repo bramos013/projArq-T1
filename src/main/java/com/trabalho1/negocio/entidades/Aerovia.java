@@ -1,16 +1,18 @@
 package com.trabalho1.negocio.entidades;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import com.trabalho1.negocio.entidades.classes_associativas.RotaAeroviaPK;
 
 @Entity
-public class Aerovia {
+public class Aerovia implements Serializable {
     @Id
     private String nome;
     private RefGeo origem;
@@ -18,8 +20,9 @@ public class Aerovia {
     private float distancia;
 
     // Associação - 1 rota pode utilizar N aerovias, 1 aerovia pode ser utilizada por N rotas
-    @OneToMany(mappedBy = "id.aerovia")
-    private Set<RotaAerovia> rotasAerovias = new HashSet<>();
+    @OneToMany
+    @JoinColumn(name = "aerovia_id")
+    private Set<RotaAerovia> rotasAerovias;
 
 
     public Aerovia(String nome, RefGeo origem, RefGeo destino, float distancia) {

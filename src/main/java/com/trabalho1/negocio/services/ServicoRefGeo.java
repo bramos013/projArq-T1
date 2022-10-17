@@ -4,11 +4,16 @@ import java.util.List;
 
 import com.trabalho1.negocio.entidades.RefGeo;
 import com.trabalho1.negocio.repositorios.IRefGeoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ServicoRefGeo {
 
     public IRefGeoRepository refGeoRep;
 
+    @Autowired
     public ServicoRefGeo(IRefGeoRepository refGeoRep) {
         this.refGeoRep = refGeoRep;
     }

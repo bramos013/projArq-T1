@@ -2,15 +2,20 @@ package com.trabalho1.negocio.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.trabalho1.negocio.entidades.PlanoDeVoo;
 import com.trabalho1.negocio.repositorios.IPlanoDeVooRepository;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class ServicoPlanoDeVoo {
+
+
     public IPlanoDeVooRepository planoDeVooRep;
 
+    @Autowired
     public ServicoPlanoDeVoo(IPlanoDeVooRepository planoDeVooRep) {
         this.planoDeVooRep = planoDeVooRep;
     }

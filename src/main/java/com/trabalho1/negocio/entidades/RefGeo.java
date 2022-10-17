@@ -2,9 +2,10 @@ package com.trabalho1.negocio.entidades;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class RefGeo {
+public class RefGeo implements Serializable {
         @Id
         private String nome;
         private Double latitude;

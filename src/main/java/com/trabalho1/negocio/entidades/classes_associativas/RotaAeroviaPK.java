@@ -6,8 +6,11 @@ import javax.persistence.ManyToOne;
 import com.trabalho1.negocio.entidades.Aerovia;
 import com.trabalho1.negocio.entidades.Rota;
 
+import java.io.Serializable;
+
 @Embeddable
-public class RotaAeroviaPK {
+public class RotaAeroviaPK implements Serializable {
+
     @ManyToOne
     private Rota rota;
 

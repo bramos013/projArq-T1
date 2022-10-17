@@ -4,17 +4,21 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
 import com.trabalho1.negocio.entidades.classes_associativas.RotaAeroviaPK;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.Serializable;
 
 @Entity
-public class RotaAerovia {
+public class RotaAerovia implements Serializable {
 
     @EmbeddedId
-    private RotaAeroviaPK id = new RotaAeroviaPK(); // chave composta 
+    private RotaAeroviaPK id; // chave composta
 
     public RotaAerovia() {
     }
 
-    // Instanciação da relação Aerovia-Rota já criada com adição das respectivas vinculações nas listas de Rotas e Aerovias 
+    // Instanciação da relação Aerovia-Rota já criada com adição das respectivas vinculações nas listas de Rotas e Aerovias
+    @Autowired
     public RotaAerovia(RotaAeroviaPK id) {
         this.id = id;
         Rota rota = id.getRota();

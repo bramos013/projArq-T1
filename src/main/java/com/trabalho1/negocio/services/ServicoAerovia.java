@@ -2,16 +2,20 @@ package com.trabalho1.negocio.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.trabalho1.negocio.entidades.Aerovia;
 import com.trabalho1.negocio.repositorios.IAeroviaRepository;
+import org.springframework.stereotype.Service;
 
 
-@Component
+@Service
 public class ServicoAerovia {
+
     public IAeroviaRepository aeroviaRep;
 
+    @Autowired
     public ServicoAerovia(IAeroviaRepository aeroviaRep){
         this.aeroviaRep = aeroviaRep;
     }

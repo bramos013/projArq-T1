@@ -3,9 +3,10 @@ package com.trabalho1.negocio.entidades;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import java.io.Serializable;
 
 @Entity
-public class Aeronave {
+public class Aeronave implements Serializable {
     @Id
     private String prefixo;
     private int autonomia;

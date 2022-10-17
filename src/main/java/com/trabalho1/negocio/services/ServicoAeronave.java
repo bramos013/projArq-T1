@@ -2,15 +2,19 @@ package com.trabalho1.negocio.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.trabalho1.negocio.entidades.Aeronave;
 import com.trabalho1.negocio.repositorios.IAeronaveRepository;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class ServicoAeronave {
+
     public IAeronaveRepository aeronaveRep;
 
+    @Autowired
     public ServicoAeronave(IAeronaveRepository aeronaveRep) {
         this.aeronaveRep = aeronaveRep;
     }
@@ -48,7 +52,8 @@ public class ServicoAeronave {
     }
 
     public void saveAll(List<Aeronave> aeronaves) {
-        aeronaveRep.saveAll(aeronaves);
+
+
     }
 
 }

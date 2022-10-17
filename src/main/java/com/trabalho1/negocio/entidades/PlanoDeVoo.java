@@ -1,13 +1,11 @@
 package com.trabalho1.negocio.entidades;
 
+import java.io.Serializable;
 import java.time.Instant;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
-public class PlanoDeVoo {
+public class PlanoDeVoo implements Serializable {
     @Id
     private String idVoo;
     private Instant data;
@@ -20,7 +18,6 @@ public class PlanoDeVoo {
     // Associação - 1 plano de voo utiliza 1 rota, 1 rota pode ser utilizada por N planos de voos
     @ManyToOne
     private Rota rota;
-
 
     public PlanoDeVoo(String idVoo, Instant data, float altitude, Rota rota, float velCruzeiro) {
         this.idVoo = idVoo;
