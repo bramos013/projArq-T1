@@ -14,8 +14,13 @@ public class RotaAerovia {
     public RotaAerovia() {
     }
 
+    // Instanciação da relação Aerovia-Rota já criada com adição das respectivas vinculações nas listas de Rotas e Aerovias 
     public RotaAerovia(RotaAeroviaPK id) {
         this.id = id;
+        Rota rota = id.getRota();
+        Aerovia aerovia = id.getAerovia();
+        id.getRota().addAerovia(aerovia);
+        id.getAerovia().addRota(rota);
     }
 
     public Rota getRota() {
@@ -33,5 +38,9 @@ public class RotaAerovia {
     public void setAerovia(Aerovia aerovia) {
         id.setAerovia(aerovia);
     }
-    
+
+    public RotaAeroviaPK getId() {
+        return id;
+    }
+
 }

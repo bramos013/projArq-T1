@@ -1,16 +1,9 @@
 package com.trabalho1.negocio.repositorios;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.trabalho1.negocio.entidades.Rota;
 
-public interface IRotaRepository {
-    void cadastra(Rota rota);
+public interface IRotaRepository extends JpaRepository<Rota, String> {
 
-    void remove(String nome);
-
-    void removeTodas();
-
-    Rota listarRotas(String nome);
-
-    List<Rota> listarTodas();
 }

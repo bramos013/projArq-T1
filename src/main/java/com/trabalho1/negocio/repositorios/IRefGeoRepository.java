@@ -1,16 +1,9 @@
 package com.trabalho1.negocio.repositorios;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.trabalho1.negocio.entidades.RefGeo;
 
-public interface IRefGeoRepository {
-    void cadastra(RefGeo refGeo);
+public interface IRefGeoRepository extends JpaRepository<RefGeo, String> {
 
-    void remove(String nome);
-
-    void removeTodas();
-
-    RefGeo listarRefGeo(String nome);
-
-    List<RefGeo> listarTodas();
 }

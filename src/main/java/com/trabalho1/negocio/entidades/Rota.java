@@ -5,9 +5,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.trabalho1.negocio.entidades.classes_associativas.RotaAeroviaPK;
+
+
 public class Rota {
+    @Id
     public String nome;
 
     // Associação - 1 plano de voo utiliza 1 rota, 1 rota pode ser utilizada por N planos de voos
@@ -31,6 +36,12 @@ public class Rota {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public void addAerovia(Aerovia aerovia) {
+        RotaAeroviaPK pk = new RotaAeroviaPK(this, aerovia);
+        RotaAerovia rotaAerovia = new RotaAerovia(pk);
+        rotasAerovias.add(rotaAerovia);
     }
 
     @Override

@@ -13,23 +13,39 @@ public class ServicoRefGeo {
         this.refGeoRep = refGeoRep;
     }
 
-    public void cadastra(RefGeo refGeo) {
-        refGeoRep.cadastra(refGeo);
+    public List<RefGeo> getRefGeo() {
+        return refGeoRep.findAll();
     }
 
-    public void remove(String nome) {
-        refGeoRep.remove(nome);
+    public RefGeo getRefGeoById(String id) {
+        return refGeoRep.findById(id).get();
     }
 
-    public void removeTodas() {
-        refGeoRep.removeTodas();
+    public boolean addRefGeo(RefGeo refGeo) {
+        if(refGeoRep.existsById(refGeo.getNome())){
+            return false;
+        }
+        refGeoRep.save(refGeo);
+        return true;
     }
 
-    public RefGeo listarRefGeo(String nome) {
-        return refGeoRep.listarRefGeo(nome);
+    public boolean updateRefGeo(RefGeo refGeo) {
+        if(refGeoRep.existsById(refGeo.getNome())){
+            refGeoRep.save(refGeo);
+            return true;
+        }
+        return false;
     }
 
-    public List<RefGeo> listarTodas() {
-        return refGeoRep.listarTodas();
+    public boolean deleteRefGeo(String nome) {
+        if(refGeoRep.existsById(nome)){
+            refGeoRep.deleteById(nome);
+            return true;
+        }
+        return false;
+    }
+   
+    public void saveAll(List<RefGeo> refGeo) {
+        refGeoRep.saveAll(refGeo);
     }
 }

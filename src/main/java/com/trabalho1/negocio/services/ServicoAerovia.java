@@ -16,17 +16,40 @@ public class ServicoAerovia {
         this.aeroviaRep = aeroviaRep;
     }
 
-    public void cadastraAeronave(Aerovia aerovia){
-        aeroviaRep.removeTodas();
-        aeroviaRep.cadastra(aerovia);
+    public List<Aerovia> getAerovias() {
+        return aeroviaRep.findAll();
     }
 
-    public List<Aerovia> listarTodas(){
-        return aeroviaRep.listarTodas();
+    public Aerovia getAerovia(String nome) {
+        return aeroviaRep.findById(nome).get();
     }
 
-    public void removeTodas(){
-        aeroviaRep.removeTodas();
+    public boolean addAerovia(Aerovia aerovia) {
+        if(aeroviaRep.existsById(aerovia.getNome())){
+            return false;
+        }
+        aeroviaRep.save(aerovia);
+        return true;
+    }
+
+    public boolean updateAerovia(Aerovia aerovia) {
+        if(aeroviaRep.existsById(aerovia.getNome())){
+            aeroviaRep.save(aerovia);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean deleteAerovia(String nome) {
+        if(aeroviaRep.existsById(nome)){
+            aeroviaRep.deleteById(nome);
+            return true;
+        }
+        return false;
+    }
+
+    public void saveAll(List<Aerovia> aerovias) {
+        aeroviaRep.saveAll(aerovias);
     }
 
 }

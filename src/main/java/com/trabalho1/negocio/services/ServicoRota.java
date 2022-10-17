@@ -15,24 +15,39 @@ public class ServicoRota {
         this.rotaRep = rotaRep;
     }
 
-    public void cadastra(Rota rota) {
-        rotaRep.removeTodas();
-        rotaRep.cadastra(rota);
+    public List<Rota> getRota() {
+        return rotaRep.findAll();
     }
 
-    public void remove(String nome) {
-        rotaRep.remove(nome);
+    public Rota getRotaById(String id) {
+        return rotaRep.findById(id).get();
     }
 
-    public void removeTodos() {
-        rotaRep.removeTodas();
+    public boolean addRota(Rota Rota) {
+        if(rotaRep.existsById(Rota.getNome())){
+            return false;
+        }
+        rotaRep.save(Rota);
+        return true;
     }
 
-    public Rota listarRotas(String nome) {
-        return rotaRep.listarRotas(nome);
+    public boolean updateRota(Rota Rota) {
+        if(rotaRep.existsById(Rota.getNome())){
+            rotaRep.save(Rota);
+            return true;
+        }
+        return false;
     }
 
-    public List<Rota> listarTodas() {
-        return rotaRep.listarTodas();
+    public boolean deleteRota(String nome) {
+        if(rotaRep.existsById(nome)){
+            rotaRep.deleteById(nome);
+            return true;
+        }
+        return false;
+    }
+    
+    public void saveAll(List<Rota> rotas) {
+        rotaRep.saveAll(rotas);
     }
 }

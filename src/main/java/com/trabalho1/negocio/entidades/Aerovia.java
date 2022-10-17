@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.trabalho1.negocio.entidades.classes_associativas.RotaAeroviaPK;
+
 @Entity
 public class Aerovia {
     @Id
@@ -57,6 +59,12 @@ public class Aerovia {
 
     public void setDistancia(float distancia) {
         this.distancia = distancia;
+    }
+
+    public void addRota(Rota rota) {
+        RotaAeroviaPK pk = new RotaAeroviaPK(rota, this);
+        RotaAerovia rotaAerovia = new RotaAerovia(pk);
+        rotasAerovias.add(rotaAerovia);
     }
 
     @Override

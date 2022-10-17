@@ -1,16 +1,11 @@
 package com.trabalho1.negocio.repositorios;
 
 import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.trabalho1.negocio.entidades.PlanoDeVoo;
 
-public interface IPlanoDeVooRepository {
-    void cadastra(PlanoDeVoo plano);
+public interface IPlanoDeVooRepository extends JpaRepository<PlanoDeVoo, String> {
 
-    void remove(String idVoo);
-
-    void removeTodos();
-
-    PlanoDeVoo listarPlanosDeVoo(String idVoo);
-
-    List<PlanoDeVoo> listarTodos();
 }

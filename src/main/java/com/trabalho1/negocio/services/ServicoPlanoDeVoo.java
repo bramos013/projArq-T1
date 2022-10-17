@@ -15,24 +15,39 @@ public class ServicoPlanoDeVoo {
         this.planoDeVooRep = planoDeVooRep;
     }
 
-    public void cadastra(PlanoDeVoo planoDeVoo) {
-        planoDeVooRep.removeTodos();
-        planoDeVooRep.cadastra(planoDeVoo);
+    public List<PlanoDeVoo> getPlanoDeVoos() {
+        return planoDeVooRep.findAll();
     }
 
-    public void remove(String idVoo) {
-        planoDeVooRep.remove(idVoo);
+    public PlanoDeVoo getPlanoDeVoo(String idVoo) {
+        return planoDeVooRep.findById(idVoo).get();
     }
 
-    public void removeTodos() {
-        planoDeVooRep.removeTodos();
+    public boolean addPlanoDeVoo(PlanoDeVoo PlanoDeVoo) {
+        if(planoDeVooRep.existsById(PlanoDeVoo.getIdVoo())){
+            return false;
+        }
+        planoDeVooRep.save(PlanoDeVoo);
+        return true;
     }
 
-    public PlanoDeVoo listarPlanosDeVoo(String idVoo) {
-        return planoDeVooRep.listarPlanosDeVoo(idVoo);
+    public boolean updatePlanoDeVoo(PlanoDeVoo PlanoDeVoo) {
+        if(planoDeVooRep.existsById(PlanoDeVoo.getIdVoo())){
+            planoDeVooRep.save(PlanoDeVoo);
+            return true;
+        }
+        return false;
     }
 
-    public List<PlanoDeVoo> listarTodos() {
-        return planoDeVooRep.listarTodos();
+    public boolean deletePlanoDeVoo(String idVoo) {
+        if(planoDeVooRep.existsById(idVoo)){
+            planoDeVooRep.deleteById(idVoo);
+            return true;
+        }
+        return false;
+    }
+
+    public void saveAll(List<PlanoDeVoo> planosDeVoo) {
+        planoDeVooRep.saveAll(planosDeVoo);
     }
 }

@@ -1,17 +1,12 @@
 package com.trabalho1.negocio.repositorios;
 
 import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.trabalho1.negocio.entidades.Aerovia;
 
-public interface IAeroviaRepository {
-    void cadastra(Aerovia aerovia);
+public interface IAeroviaRepository extends JpaRepository<Aerovia, String> {
 
-    void remove(String nome);
-
-    void removeTodas();
-
-    Aerovia listarAerovia(String nome);
-
-    List<Aerovia> listarTodas();
 
 }

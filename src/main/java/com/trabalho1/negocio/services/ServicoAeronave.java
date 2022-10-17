@@ -15,25 +15,40 @@ public class ServicoAeronave {
         this.aeronaveRep = aeronaveRep;
     }
 
-    public void cadastra(Aeronave aeronave) {
-        aeronaveRep.removeTodas();
-        aeronaveRep.cadastra(aeronave);
+    public List<Aeronave> getAeronaves() {
+        return aeronaveRep.findAll();
     }
 
-    public void remove(String prefixo) {
-        aeronaveRep.remove(prefixo);
+    public Aeronave getAeronave(String prefixo) {
+        return aeronaveRep.findById(prefixo).get();
     }
 
-    public void removeTodas() {
-        aeronaveRep.removeTodas();
+    public boolean addAeronave(Aeronave aeronave) {
+        if(aeronaveRep.existsById(aeronave.getPrefixo())){
+            return false;
+        }
+        aeronaveRep.save(aeronave);
+        return true;
     }
 
-    public Aeronave listarAeronave(String prefixo) {
-        return aeronaveRep.listarAeronave(prefixo);
+    public boolean updateAeronave(Aeronave aeronave) {
+        if(aeronaveRep.existsById(aeronave.getPrefixo())){
+            aeronaveRep.save(aeronave);
+            return true;
+        }
+        return false;
     }
 
-    public List<Aeronave> listarTodas() {
-        return aeronaveRep.listarTodas();
+    public boolean deleteAeronave(String prefixo) {
+        if(aeronaveRep.existsById(prefixo)){
+            aeronaveRep.deleteById(prefixo);
+            return true;
+        }
+        return false;
+    }
+
+    public void saveAll(List<Aeronave> aeronaves) {
+        aeronaveRep.saveAll(aeronaves);
     }
 
 }
