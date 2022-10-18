@@ -13,13 +13,14 @@ import org.springframework.web.servlet.function.EntityResponse;
 import java.util.List;
 
 @RestController
-@RequestMapping("/rotas")
+@RequestMapping(value = "/rotas")
 public class RotasController {
     @Autowired
     private ServicoRota servicoRota;
 
     @GetMapping(value = "/findAll")
-    public ResponseEntity<List<Rota>> listAll() {
-        return new ResponseEntity<List<Rota>>(servicoRota.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<Rota>> findAll() {
+        System.out.println("this is call");
+        return new ResponseEntity<List<Rota>>(servicoRota.getRota(), HttpStatus.OK);
     }
 }

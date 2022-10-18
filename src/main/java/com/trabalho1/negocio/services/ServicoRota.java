@@ -49,10 +49,6 @@ public class ServicoRota {
         }
         return false;
     }
-
-    public List<Rota> findAll() {
-        return this.rotaRep.findAll();
-    }
     
     public void saveAll(List<Rota> rotas) {
         rotaRep.saveAll(rotas);

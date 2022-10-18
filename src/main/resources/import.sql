@@ -1,68 +1,25 @@
-package com.trabalho1.config;
+INSERT INTO refs_geos (nome, latitude, longitude) VALUES ('(A1) Aeroporto Santos Dummont', -22.910000, -43.163056)
+INSERT INTO refs_geos (nome, latitude, longitude) VALUES ('(A2) Aeroporto de Congonhas', -23.626944, -46.655833)
+INSERT INTO refs_geos (nome, latitude, longitude) VALUES ('(A3) Aeroporto Internacional Salgado Filho', -29.993889, -51.171667)
+INSERT INTO refs_geos (nome, latitude, longitude) VALUES ('(A4) Aeroporto Internacional de Confins', -19.633333, -43.968056)
+INSERT INTO refs_geos (nome, latitude, longitude) VALUES ('(P1) Referência Geográfica intermediária (Curitiba)', -25.528056, -49.175833)
 
-import java.time.Instant;
-import java.util.Arrays;
+INSERT INTO aeronaves (prefixo,autonomia,velocidade_Cruzeiro) VALUES ('PR-GUO', 300000, 850);
+INSERT INTO aeronaves (prefixo,autonomia,velocidade_Cruzeiro) VALUES ('PR-MHZ', 6500000, 900);
+INSERT INTO aeronaves (prefixo,autonomia,velocidade_Cruzeiro) VALUES ('VP-SLR',100000, 950);
+INSERT INTO aeronaves (prefixo,autonomia,velocidade_Cruzeiro) VALUES ('PR-XME',100000, 950);
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
+INSERT INTO aerovias (nome, origem, destino, distancia) VALUES ('Av1', '(A1) Aeroporto Santos Dummont', '(A2) Aeroporto de Congonhas', 367);
+INSERT INTO aerovias (nome, origem, destino, distancia) VALUES ('Av2', '(A2) Aeroporto de Congonhas', '(A2) Aeroporto de Congonhas', 367);
+INSERT INTO aerovias (nome, origem, destino, distancia) VALUES ('Av3', '(A3) Aeroporto Internacional Salgado Filho', '(A2) Aeroporto de Congonhas', 367);
+INSERT INTO aerovias (nome, origem, destino, distancia) VALUES ('Av4', '(A1) Aeroporto Santos Dummont', '(A2) Aeroporto de Congonhas', 367);
+INSERT INTO aerovias (nome, origem, destino, distancia) VALUES ('Av5', '(A4) Aeroporto Internacional de Confins', '(A2) Aeroporto de Congonhas', 367);
+INSERT INTO aerovias (nome, origem, destino, distancia) VALUES ('Av6', '(P1) Referência Geográfica intermediária (Curitiba)', '(A2) Aeroporto de Congonhas', 367);
+INSERT INTO aerovias (nome, origem, destino, distancia) VALUES ('Av7', '(P1) Referência Geográfica intermediária (Curitiba)', '(A2) Aeroporto de Congonhas', 367);
+INSERT INTO aerovias (nome, origem, destino, distancia) VALUES ('Av8', '(A4) Aeroporto Internacional de Confins', '(A2) Aeroporto de Congonhas', 367);
+INSERT INTO aerovias (nome, origem, destino, distancia) VALUES ('Av9', '(A3) Aeroporto Internacional Salgado Filho', '(A2) Aeroporto de Congonhas', 367);
+INSERT INTO aerovias (nome, origem, destino, distancia) VALUES ('Av10', '(A2) Aeroporto de Congonhas', '(A2) Aeroporto de Congonhas', 367);
 
-import com.trabalho1.negocio.entidades.Aeronave;
-import com.trabalho1.negocio.entidades.Aerovia;
-import com.trabalho1.negocio.entidades.PlanoDeVoo;
-import com.trabalho1.negocio.entidades.RefGeo;
-import com.trabalho1.negocio.entidades.Rota;
-import com.trabalho1.negocio.entidades.RotaAerovia;
-import com.trabalho1.negocio.entidades.classes_associativas.RotaAeroviaPK;
-import com.trabalho1.negocio.services.ServicoAeronave;
-import com.trabalho1.negocio.services.ServicoAerovia;
-import com.trabalho1.negocio.services.ServicoPlanoDeVoo;
-import com.trabalho1.negocio.services.ServicoRefGeo;
-import com.trabalho1.negocio.services.ServicoRota;
-import com.trabalho1.negocio.services.ServicoRotaAerovia;
-
-
-@Configuration
-@Profile("test")
-public class TestConfig implements CommandLineRunner {
-
-	@Autowired
-	private ServicoAeronave servicoAeronave;
-
-	@Autowired
-	private ServicoRota servicoRota;
-
-	@Autowired
-	private ServicoAerovia servicoAerovia;
-
-	@Autowired
-	private ServicoPlanoDeVoo servicoPlanoDeVoo;
-
-	@Autowired
-	private ServicoRefGeo servicoRefGeo;
-
-	@Autowired
-	private ServicoRotaAerovia servicoRotaAerovia;
-
-	@Override
-	public void run(String... args) throws Exception {
-
-//		Aeronave aeronave1 = new Aeronave("PR-GUO", 300000, 850);
-//		Aeronave aeronave2 = new Aeronave("PR-MHZ", 6500000, 900);
-//		Aeronave aeronave3 = new Aeronave("VP-SLR", 100000, 950);
-//		Aeronave aeronave4 = new Aeronave("PR-XME", 200000, 850);
-//
-//		servicoAeronave.saveAll(Arrays.asList(aeronave1, aeronave2, aeronave3, aeronave4));
-//
-//		RefGeo refGeo1 = new RefGeo("(A1) Aeroporto Santos Dummont", -22.910000, -43.163056);
-//		RefGeo refGeo2 = new RefGeo("(A2) Aeroporto de Congonhas", -23.626944, -46.655833);
-//		RefGeo refGeo3 = new RefGeo("(A3) Aeroporto Internacional Salgado Filho", -29.993889, -51.171667);
-//		RefGeo refGeo4 = new RefGeo("(A4) Aeroporto Internacional de Confins", -19.633333, -43.968056);
-//		RefGeo refGeo5 = new RefGeo("(P1) Referência Geográfica intermediária (Curitiba)", -25.528056, -49.175833);
-//
-//		servicoRefGeo.saveAll(Arrays.asList(refGeo1, refGeo2, refGeo3, refGeo4, refGeo5));
-//
 //		Aerovia aerovia1 = new Aerovia("Av1", refGeo1, refGeo2, 367);
 //		Aerovia aerovia2 = new Aerovia("Av2", refGeo2, refGeo1, 367);
 //		Aerovia aerovia3 = new Aerovia("Av3", refGeo3, refGeo2, 1600);
@@ -130,5 +87,3 @@ public class TestConfig implements CommandLineRunner {
 //
 //		servicoPlanoDeVoo.saveAll(Arrays.asList(planoVoo1, planoVoo2, planoVoo3, planoVoo4, planoVoo5, planoVoo6, planoVoo7, planoVoo8, planoVoo9, planoVoo10, planoVoo11, planoVoo12));
 //
-	}
-}

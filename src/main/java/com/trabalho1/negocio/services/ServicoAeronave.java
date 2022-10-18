@@ -1,6 +1,7 @@
 package com.trabalho1.negocio.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,8 +24,8 @@ public class ServicoAeronave {
         return aeronaveRep.findAll();
     }
 
-    public Aeronave getAeronave(String prefixo) {
-        return aeronaveRep.findById(prefixo).get();
+    public Optional<Aeronave> getAeronave(String prefixo) {
+        return aeronaveRep.findById(prefixo);
     }
 
     public boolean addAeronave(Aeronave aeronave) {

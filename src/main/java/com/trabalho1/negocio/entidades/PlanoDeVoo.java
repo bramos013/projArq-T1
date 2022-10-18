@@ -1,30 +1,36 @@
 package com.trabalho1.negocio.entidades;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
 import javax.persistence.*;
 
 @Entity
 public class PlanoDeVoo implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 4788874478874108911L;
+
     @Id
     private String idVoo;
-    private Instant data;
     private float altitude;
+    private Instant data;
     private float velCruzeiro;
 
     // Associação - 1 plano de voo corresponde a 1 aeronave
     @OneToOne
+    @JoinColumn(name = "aeronave_id")
     private Aeronave aeronave;
-    // Associação - 1 plano de voo utiliza 1 rota, 1 rota pode ser utilizada por N planos de voos
-    @ManyToOne
-    private Rota rota;
 
     public PlanoDeVoo(String idVoo, Instant data, float altitude, Rota rota, float velCruzeiro) {
         this.idVoo = idVoo;
         this.data = data;
         this.altitude = altitude;
-        this.rota = rota;
         this.velCruzeiro = velCruzeiro;
+    }
+
+    public PlanoDeVoo() {
+
     }
 
     public String getIdVoo() {
@@ -51,14 +57,6 @@ public class PlanoDeVoo implements Serializable {
         this.altitude = altitude;
     }
 
-    public Rota getRota() {
-        return rota;
-    }
-
-    public void setRota(Rota rota) {
-        this.rota = rota;
-    }
-
     public float getVelCruzeiro() {
         return velCruzeiro;
     }
@@ -73,7 +71,6 @@ public class PlanoDeVoo implements Serializable {
                 "idVoo='" + idVoo + '\'' +
                 ", data=" + data +
                 ", altitude=" + altitude +
-                ", rota=" + rota +
                 ", velCruzeiro=" + velCruzeiro +
                 '}';
     }

@@ -6,10 +6,14 @@ import javax.persistence.Entity;
 import com.trabalho1.negocio.entidades.classes_associativas.RotaAeroviaPK;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
 public class RotaAerovia implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 8912298332924296626L;
 
     @EmbeddedId
     private RotaAeroviaPK id; // chave composta

@@ -1,15 +1,20 @@
 package com.trabalho1.negocio.entidades.classes_associativas;
 
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.trabalho1.negocio.entidades.Aerovia;
 import com.trabalho1.negocio.entidades.Rota;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Embeddable
 public class RotaAeroviaPK implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = -6450980139570413811L;
 
     @ManyToOne
     private Rota rota;

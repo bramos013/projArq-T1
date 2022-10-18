@@ -1,35 +1,44 @@
 package com.trabalho1.negocio.entidades;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import com.trabalho1.negocio.entidades.classes_associativas.RotaAeroviaPK;
 
 @Entity
+@Table(name = "aerovias")
 public class Aerovia implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1666440451480265571L;
+
     @Id
     private String nome;
+    @OneToOne // verificar relação
+    @JoinColumn(name = "origem")
     private RefGeo origem;
+    @OneToOne
+    @JoinColumn(name = "destino")
     private RefGeo destino;
     private float distancia;
 
-    // Associação - 1 rota pode utilizar N aerovias, 1 aerovia pode ser utilizada por N rotas
+    // Associação - rota pode utilizar 1 aerovia, 1 aerovia pode ser utilizada por N rotas
     @OneToMany
     @JoinColumn(name = "aerovia_id")
     private Set<RotaAerovia> rotasAerovias;
-
 
     public Aerovia(String nome, RefGeo origem, RefGeo destino, float distancia) {
         this.nome = nome;
         this.origem = origem;
         this.destino = destino;
         this.distancia = distancia;
+    }
+
+    public Aerovia() {
+
     }
 
     public String getNome() {

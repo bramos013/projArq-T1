@@ -1,12 +1,16 @@
 package com.trabalho1.negocio.entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "aeronaves")
 public class Aeronave implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 3688596407717696423L;
+
     @Id
     private String prefixo;
     private int autonomia;
@@ -14,12 +18,17 @@ public class Aeronave implements Serializable {
 
     // Associação - 1 aeronave possui 1 plano de voo
     @OneToOne
+    @JoinColumn(name = "plano_de_voo_id")
     private PlanoDeVoo planoDeVoo;
 
     public Aeronave(String prefixo, int autonomia, int velocidadeCruzeiro) {
         this.prefixo = prefixo;
         this.autonomia = autonomia;
         this.velocidadeCruzeiro = velocidadeCruzeiro;
+    }
+
+    public Aeronave() {
+
     }
 
     public String getPrefixo() {

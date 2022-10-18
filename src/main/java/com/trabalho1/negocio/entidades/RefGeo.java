@@ -2,10 +2,17 @@ package com.trabalho1.negocio.entidades;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "refs_geos")
 public class RefGeo implements Serializable {
+
+        @Serial
+        private static final long serialVersionUID = -7846769630819534737L;
+
         @Id
         private String nome;
         private Double latitude;
@@ -15,6 +22,10 @@ public class RefGeo implements Serializable {
                 this.nome = nome;
                 this.latitude = latitude;
                 this.longitude = longitude;
+        }
+
+        public RefGeo() {
+
         }
 
         public String getNome() {
