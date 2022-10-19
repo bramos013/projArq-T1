@@ -23,8 +23,15 @@ public class RotasController {
         return new ResponseEntity<List<Rota>>(servicoRota.getRota(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/procuraRotaEntre/{ref1}-{ref2}")
+    @GetMapping(value = "/procuraRotaEntre/{ref1},{ref2}")
     public ResponseEntity<List<Rota>> procuraRota(@PathVariable String ref1, @PathVariable String ref2) {
         return new ResponseEntity<List<Rota>>(this.servicoRota.findRouteBetween(ref1, ref2), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/procuraRotaEntre/{id1},{id2}/byId") //http://localhost:8080/rotas/procuraRotaEntre/1,2/byId
+    public ResponseEntity<List<Rota>> procuraRota(@PathVariable int id1, @PathVariable int id2) {
+        return new ResponseEntity<List<Rota>>(this.servicoRota.findRouteBetweenUsingId(id1, id2), HttpStatus.OK);
+    }
 }
+
+

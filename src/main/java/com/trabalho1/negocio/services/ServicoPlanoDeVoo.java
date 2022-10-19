@@ -57,12 +57,4 @@ public class ServicoPlanoDeVoo {
         planoDeVooRep.saveAll(planosDeVoo);
     }
 
-    public boolean aprovaPlanoDeVoo(PlanoDeVoo planoDeVoo) {
-        
-        return false;
-    }
-
-    public void aprovaPlanoDeVoo(String idVoo, Instant data, float altitude, Rota rota, float velCruzeiro) {
-
-    }
 }

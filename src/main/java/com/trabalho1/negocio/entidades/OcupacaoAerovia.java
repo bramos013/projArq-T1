@@ -19,18 +19,18 @@ public class OcupacaoAerovia {
     private Set<Aerovia> aerovias;
 
     private int nivelAlti;
-    private int horario;
+    private int slotHorario;
 
     public OcupacaoAerovia(){
 
     }
 
-    public OcupacaoAerovia(int id, LocalDate date, Set<Aerovia> aerovia, int nivelAlti, int horario) {
+    public OcupacaoAerovia(int id, LocalDate date, Set<Aerovia> aerovia, int nivelAlti, int slotHorario) {
         this.id = id;
         this.data = date;
         this.aerovias = aerovia;
         this.nivelAlti = nivelAlti;
-        this.horario = horario;
+        this.slotHorario = slotHorario;
     }
 
     public int getId() {
@@ -59,11 +59,11 @@ public class OcupacaoAerovia {
         this.nivelAlti = nivelAlti;
     }
 
-    public int getHorario() {
-        return horario;
+    public int getSlotHorario() {
+        return slotHorario;
     }
 
-    public void setHorario(int horario) {
-        this.horario = horario;
+    public void setSlotHorario(int slotHorario) {
+        this.slotHorario = slotHorario;
     }
 }

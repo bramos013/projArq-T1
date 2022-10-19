@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -19,7 +20,7 @@ public class PlanoDeVoo implements Serializable {
 
     private String idVoo;
     private float altitude;
-    private Instant data;
+    private LocalDate data;
     private float velCruzeiro;
 
 
@@ -31,7 +32,7 @@ public class PlanoDeVoo implements Serializable {
     @JoinColumn(name = "rota_id")
     private Rota rota;
 
-    public PlanoDeVoo(String idVoo, Instant data, float altitude, Rota rota, float velCruzeiro) {
+    public PlanoDeVoo(String idVoo, LocalDate data, float altitude, Rota rota, float velCruzeiro) {
         this.idVoo = idVoo;
         this.data = data;
         this.altitude = altitude;
@@ -50,11 +51,15 @@ public class PlanoDeVoo implements Serializable {
         this.idVoo = idVoo;
     }
 
-    public Instant getData() {
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Instant data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 

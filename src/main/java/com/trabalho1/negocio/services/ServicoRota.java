@@ -55,6 +55,14 @@ public class ServicoRota {
            return t1 && t2;
        }).toList();
     }
+
+    public List<Rota> findRouteBetweenUsingId(int idOrigem, int idDestiono) {
+        return this.rotaRep.findAll().stream().filter(rota -> {
+            boolean t1 = rota.getAerovias().getOrigem().getId() == idOrigem;
+            boolean t2 = rota.getAerovias().getDestino().getId() == idDestiono;
+            return t1 && t2;
+        }).toList();
+    }
     public void saveAll(List<Rota> rotas) {
         rotaRep.saveAll(rotas);
     }

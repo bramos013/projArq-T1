@@ -14,7 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "/plano_de_voo")
+@RequestMapping("/plano_de_voo")
 public class PlanoDeVooContoller {
 
     @Autowired
