@@ -6,6 +6,7 @@ import com.trabalho1.negocio.entidades.PlanoDeVoo;
 import com.trabalho1.negocio.entidades.Rota;
 import com.trabalho1.negocio.repositorios.IOcupacaoRepository;
 import com.trabalho1.negocio.repositorios.IPlanoDeVooRepository;
+import org.aspectj.weaver.patterns.IVerificationRequired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ServicoPlanoDeVoo {
@@ -96,10 +98,26 @@ public class ServicoPlanoDeVoo {
         return null;
     }
 
+    public PlanoDeVoo cancelaPlanoDeVoo(int idVoo) {
+        Optional<PlanoDeVoo> planoDeVoo = this.getPlanoDeVoo(idVoo);
+        Rota rota = planoDeVoo.get().getRota();
+
+        if(planoDeVoo.isPresent()){
+            PlanoDeVoo plano = planoDeVoo.get();
+            plano.setLiberado(false);
+            this.updatePlanoDeVoo(plano);
+
+            return plano;
+        }
+
+        return null;
+    }
+
+
     private boolean updateOcupacaoAerovia(OcupacaoAerovia ocupacaoAerovia) {
         if(this.ocupacaoRep.existsById(ocupacaoAerovia.getId())){
             ocupacaoRep.save(ocupacaoAerovia);
-            return true;
+            return   true;
         }
         return false;
     }
