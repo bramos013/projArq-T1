@@ -1,10 +1,12 @@
 package com.trabalho1.negocio.services;
 
 import com.trabalho1.negocio.entidades.PlanoDeVoo;
+import com.trabalho1.negocio.entidades.Rota;
 import com.trabalho1.negocio.repositorios.IPlanoDeVooRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,5 +60,9 @@ public class ServicoPlanoDeVoo {
     public boolean aprovaPlanoDeVoo(PlanoDeVoo planoDeVoo) {
         
         return false;
+    }
+
+    public void aprovaPlanoDeVoo(String idVoo, Instant data, float altitude, Rota rota, float velCruzeiro) {
+
     }
 }
