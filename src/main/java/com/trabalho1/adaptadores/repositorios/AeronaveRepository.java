@@ -1,5 +1,7 @@
 package com.trabalho1.adaptadores.repositorios;
 
+import com.trabalho1.negocio.entidades.Aeronave;
+import com.trabalho1.negocio.repositorios.IAeronaveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -7,9 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.jdbc.core.JdbcTemplate;
-
-import com.trabalho1.negocio.entidades.Aeronave;
-import com.trabalho1.negocio.repositorios.IAeronaveRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -57,6 +56,7 @@ public class AeronaveRepository implements IAeronaveRepository {
                 (rs, rowNum) -> new Aeronave(rs.getString("prefixo"), rs.getInt("autonomia"), rs.getInt("velocidadeCruzeiro")), prefixo);
     }
 
+
     @Override
     public List<Aeronave> findAll() {
         return null;
@@ -73,7 +73,7 @@ public class AeronaveRepository implements IAeronaveRepository {
     }
 
     @Override
-    public List<Aeronave> findAllById(Iterable<String> strings) {
+    public List<Aeronave> findAllById(Iterable<Integer> integers) {
         return null;
     }
 
@@ -83,7 +83,7 @@ public class AeronaveRepository implements IAeronaveRepository {
     }
 
     @Override
-    public void deleteById(String s) {
+    public void deleteById(Integer integer) {
 
     }
 
@@ -93,7 +93,7 @@ public class AeronaveRepository implements IAeronaveRepository {
     }
 
     @Override
-    public void deleteAllById(Iterable<? extends String> strings) {
+    public void deleteAllById(Iterable<? extends Integer> integers) {
 
     }
 
@@ -118,12 +118,12 @@ public class AeronaveRepository implements IAeronaveRepository {
     }
 
     @Override
-    public Optional<Aeronave> findById(String s) {
+    public Optional<Aeronave> findById(Integer integer) {
         return Optional.empty();
     }
 
     @Override
-    public boolean existsById(String s) {
+    public boolean existsById(Integer integer) {
         return false;
     }
 
@@ -148,7 +148,7 @@ public class AeronaveRepository implements IAeronaveRepository {
     }
 
     @Override
-    public void deleteAllByIdInBatch(Iterable<String> strings) {
+    public void deleteAllByIdInBatch(Iterable<Integer> integers) {
 
     }
 
@@ -158,17 +158,17 @@ public class AeronaveRepository implements IAeronaveRepository {
     }
 
     @Override
-    public Aeronave getOne(String s) {
+    public Aeronave getOne(Integer integer) {
         return null;
     }
 
     @Override
-    public Aeronave getById(String s) {
+    public Aeronave getById(Integer integer) {
         return null;
     }
 
     @Override
-    public Aeronave getReferenceById(String s) {
+    public Aeronave getReferenceById(Integer integer) {
         return null;
     }
 
@@ -206,6 +206,7 @@ public class AeronaveRepository implements IAeronaveRepository {
     public <S extends Aeronave, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
         return null;
     }
+
 
     // public List<Aeronave> listarTodas(){
     //     return this.jdbcTemplate.query("SELECT * FROM aeronaves",

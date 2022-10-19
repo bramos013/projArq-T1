@@ -1,13 +1,8 @@
 package com.trabalho1.negocio.entidades;
 
+import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.*;
-
-import com.trabalho1.negocio.entidades.classes_associativas.RotaAeroviaPK;
 
 @Entity
 @Table(name = "aerovias")
@@ -16,19 +11,23 @@ public class Aerovia implements Serializable {
     private static final long serialVersionUID = 1666440451480265571L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     private String nome;
-    @OneToOne // verificar relação
-    @JoinColumn(name = "origem")
-    private RefGeo origem;
-    @OneToOne
-    @JoinColumn(name = "destino")
-    private RefGeo destino;
     private float distancia;
 
-    // Associação - rota pode utilizar 1 aerovia, 1 aerovia pode ser utilizada por N rotas
-    @OneToMany
-    @JoinColumn(name = "aerovia_id")
-    private Set<RotaAerovia> rotasAerovias;
+    @OneToOne
+    @JoinColumn(name = "origem_id")
+    private RefGeo origem;
+
+    @OneToOne
+    @JoinColumn(name = "destino_id")
+    private RefGeo destino;
+
+    @ManyToOne
+    @JoinColumn(name = "ocupacao_id")
+    private OcupacaoAerovia ocupacaoAerovia;
 
     public Aerovia(String nome, RefGeo origem, RefGeo destino, float distancia) {
         this.nome = nome;
@@ -39,6 +38,14 @@ public class Aerovia implements Serializable {
 
     public Aerovia() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -74,9 +81,6 @@ public class Aerovia implements Serializable {
     }
 
     public void addRota(Rota rota) {
-        RotaAeroviaPK pk = new RotaAeroviaPK(rota, this);
-        RotaAerovia rotaAerovia = new RotaAerovia(pk);
-        rotasAerovias.add(rotaAerovia);
     }
 
     @Override

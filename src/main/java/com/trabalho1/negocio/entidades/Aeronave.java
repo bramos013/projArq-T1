@@ -12,14 +12,12 @@ public class Aeronave implements Serializable {
     private static final long serialVersionUID = 3688596407717696423L;
 
     @Id
-    private String prefixo;
-    private int autonomia;
-    private int velocidadeCruzeiro;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    // Associação - 1 aeronave possui 1 plano de voo
-    @OneToOne
-    @JoinColumn(name = "plano_de_voo_id")
-    private PlanoDeVoo planoDeVoo;
+    private String prefixo;
+    private int velocidadeCruzeiro;
+    private int autonomia;
 
     public Aeronave(String prefixo, int autonomia, int velocidadeCruzeiro) {
         this.prefixo = prefixo;
@@ -30,6 +28,16 @@ public class Aeronave implements Serializable {
     public Aeronave() {
 
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
 
     public String getPrefixo() {
         return prefixo;

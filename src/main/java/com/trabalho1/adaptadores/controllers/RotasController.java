@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.function.EntityResponse;
 
 import java.util.List;
 
@@ -20,7 +20,11 @@ public class RotasController {
 
     @GetMapping(value = "/findAll")
     public ResponseEntity<List<Rota>> findAll() {
-        System.out.println("this is call");
         return new ResponseEntity<List<Rota>>(servicoRota.getRota(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/procuraRotaEntre/{ref1}-{ref2}")
+    public ResponseEntity<List<Rota>> procuraRota(@PathVariable String ref1, @PathVariable String ref2) {
+        return new ResponseEntity<List<Rota>>(this.servicoRota.findRouteBetween(ref1, ref2), HttpStatus.OK);
     }
 }

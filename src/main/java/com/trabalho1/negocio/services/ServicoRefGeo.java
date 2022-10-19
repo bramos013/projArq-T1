@@ -1,12 +1,11 @@
 package com.trabalho1.negocio.services;
 
-import java.util.List;
-
 import com.trabalho1.negocio.entidades.RefGeo;
 import com.trabalho1.negocio.repositorios.IRefGeoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ServicoRefGeo {
@@ -22,12 +21,12 @@ public class ServicoRefGeo {
         return refGeoRep.findAll();
     }
 
-    public RefGeo getRefGeoById(String id) {
+    public RefGeo getRefGeoById(Integer id) {
         return refGeoRep.findById(id).get();
     }
 
     public boolean addRefGeo(RefGeo refGeo) {
-        if(refGeoRep.existsById(refGeo.getNome())){
+        if(refGeoRep.existsById(refGeo.getId())){
             return false;
         }
         refGeoRep.save(refGeo);
@@ -35,16 +34,16 @@ public class ServicoRefGeo {
     }
 
     public boolean updateRefGeo(RefGeo refGeo) {
-        if(refGeoRep.existsById(refGeo.getNome())){
+        if(refGeoRep.existsById(refGeo.getId())){
             refGeoRep.save(refGeo);
             return true;
         }
         return false;
     }
 
-    public boolean deleteRefGeo(String nome) {
-        if(refGeoRep.existsById(nome)){
-            refGeoRep.deleteById(nome);
+    public boolean deleteRefGeo(Integer id) {
+        if(refGeoRep.existsById(id)){
+            refGeoRep.deleteById(id);
             return true;
         }
         return false;

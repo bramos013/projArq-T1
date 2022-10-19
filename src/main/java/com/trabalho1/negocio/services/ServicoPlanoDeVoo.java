@@ -1,13 +1,12 @@
 package com.trabalho1.negocio.services;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.trabalho1.negocio.entidades.PlanoDeVoo;
 import com.trabalho1.negocio.repositorios.IPlanoDeVooRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServicoPlanoDeVoo {
@@ -24,27 +23,27 @@ public class ServicoPlanoDeVoo {
         return planoDeVooRep.findAll();
     }
 
-    public PlanoDeVoo getPlanoDeVoo(String idVoo) {
-        return planoDeVooRep.findById(idVoo).get();
+    public Optional<PlanoDeVoo> getPlanoDeVoo(Integer idVoo) {
+        return planoDeVooRep.findById(idVoo);
     }
 
-    public boolean addPlanoDeVoo(PlanoDeVoo PlanoDeVoo) {
-        if(planoDeVooRep.existsById(PlanoDeVoo.getIdVoo())){
+    public boolean addPlanoDeVoo(PlanoDeVoo planoDeVoo) {
+        if(planoDeVooRep.existsById(planoDeVoo.getId())){
             return false;
         }
-        planoDeVooRep.save(PlanoDeVoo);
+        planoDeVooRep.save(planoDeVoo);
         return true;
     }
 
-    public boolean updatePlanoDeVoo(PlanoDeVoo PlanoDeVoo) {
-        if(planoDeVooRep.existsById(PlanoDeVoo.getIdVoo())){
-            planoDeVooRep.save(PlanoDeVoo);
+    public boolean updatePlanoDeVoo(PlanoDeVoo planoDeVoo) {
+        if(this.planoDeVooRep.existsById(planoDeVoo.getId())){
+            planoDeVooRep.save(planoDeVoo);
             return true;
         }
         return false;
     }
 
-    public boolean deletePlanoDeVoo(String idVoo) {
+    public boolean deletePlanoDeVoo(Integer idVoo) {
         if(planoDeVooRep.existsById(idVoo)){
             planoDeVooRep.deleteById(idVoo);
             return true;
@@ -54,5 +53,10 @@ public class ServicoPlanoDeVoo {
 
     public void saveAll(List<PlanoDeVoo> planosDeVoo) {
         planoDeVooRep.saveAll(planosDeVoo);
+    }
+
+    public boolean aprovaPlanoDeVoo(PlanoDeVoo planoDeVoo) {
+        
+        return false;
     }
 }

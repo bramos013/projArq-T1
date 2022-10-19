@@ -1,8 +1,6 @@
 package com.trabalho1.negocio.entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -14,6 +12,8 @@ public class RefGeo implements Serializable {
         private static final long serialVersionUID = -7846769630819534737L;
 
         @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private int id;
         private String nome;
         private Double latitude;
         private Double longitude;
@@ -50,6 +50,14 @@ public class RefGeo implements Serializable {
 
         public void setLongitude(Double longitude) {
                 this.longitude = longitude;
+        }
+
+        public int getId() {
+                return id;
+        }
+
+        public void setId(int id) {
+                this.id = id;
         }
 
         @Override

@@ -1,6 +1,5 @@
 package com.trabalho1.adaptadores.controllers;
 
-import com.trabalho1.adaptadores.repositorios.AeronaveRepository;
 import com.trabalho1.negocio.entidades.Aeronave;
 import com.trabalho1.negocio.services.ServicoAeronave;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +24,9 @@ public class AeronaveController {
         return new ResponseEntity<List<Aeronave>>(repository.getAeronaves(), HttpStatus.OK);
     }
 
-    @GetMapping("/findByPrefix/{prefix}")
-    public ResponseEntity<Aeronave> findById(@PathVariable String prefix) {
-        return new ResponseEntity<Aeronave>(this.repository.getAeronave(prefix)
+    @GetMapping("/findByPrefix/{id}")
+    public ResponseEntity<Aeronave> findById(@PathVariable Integer id) {
+        return new ResponseEntity<Aeronave>(this.repository.getAeronave(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND))
                 , HttpStatus.OK);
     }

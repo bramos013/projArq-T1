@@ -1,26 +1,35 @@
 package com.trabalho1.negocio.entidades;
 
+import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
-import javax.persistence.*;
+import java.util.Set;
 
 @Entity
+@Table(name = "planos_de_voo")
 public class PlanoDeVoo implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 4788874478874108911L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     private String idVoo;
     private float altitude;
     private Instant data;
     private float velCruzeiro;
 
-    // Associação - 1 plano de voo corresponde a 1 aeronave
+
     @OneToOne
     @JoinColumn(name = "aeronave_id")
     private Aeronave aeronave;
+
+    @ManyToOne
+    @JoinColumn(name = "rota_id")
+    private Rota rota;
 
     public PlanoDeVoo(String idVoo, Instant data, float altitude, Rota rota, float velCruzeiro) {
         this.idVoo = idVoo;
@@ -63,6 +72,30 @@ public class PlanoDeVoo implements Serializable {
 
     public void setVelCruzeiro(float velCruzeiro) {
         this.velCruzeiro = velCruzeiro;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Aeronave getAeronave() {
+        return aeronave;
+    }
+
+    public void setAeronave(Aeronave aeronave) {
+        this.aeronave = aeronave;
+    }
+
+    public Rota getRota() {
+        return rota;
+    }
+
+    public void setRota(Rota rota) {
+        this.rota = rota;
     }
 
     @Override

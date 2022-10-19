@@ -1,14 +1,12 @@
 package com.trabalho1.negocio.services;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.trabalho1.negocio.entidades.Aeronave;
 import com.trabalho1.negocio.repositorios.IAeronaveRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServicoAeronave {
@@ -24,12 +22,12 @@ public class ServicoAeronave {
         return aeronaveRep.findAll();
     }
 
-    public Optional<Aeronave> getAeronave(String prefixo) {
-        return aeronaveRep.findById(prefixo);
+    public Optional<Aeronave> getAeronave(Integer id) {
+        return aeronaveRep.findById(id);
     }
 
     public boolean addAeronave(Aeronave aeronave) {
-        if(aeronaveRep.existsById(aeronave.getPrefixo())){
+        if(aeronaveRep.existsById(aeronave.getId())){
             return false;
         }
         aeronaveRep.save(aeronave);
@@ -37,16 +35,16 @@ public class ServicoAeronave {
     }
 
     public boolean updateAeronave(Aeronave aeronave) {
-        if(aeronaveRep.existsById(aeronave.getPrefixo())){
+        if(aeronaveRep.existsById(aeronave.getId())){
             aeronaveRep.save(aeronave);
             return true;
         }
         return false;
     }
 
-    public boolean deleteAeronave(String prefixo) {
-        if(aeronaveRep.existsById(prefixo)){
-            aeronaveRep.deleteById(prefixo);
+    public boolean deleteAeronave(Integer id) {
+        if(aeronaveRep.existsById(id)){
+            aeronaveRep.deleteById(id);
             return true;
         }
         return false;
