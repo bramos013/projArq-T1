@@ -19,9 +19,13 @@ public class PlanoDeVoo implements Serializable {
     private int id;
 
     private String idVoo;
+
+    private float horarioPartida;
     private float altitude;
     private LocalDate data;
     private float velCruzeiro;
+
+    private Boolean liberarRota;
 
 
     @OneToOne
@@ -32,11 +36,13 @@ public class PlanoDeVoo implements Serializable {
     @JoinColumn(name = "rota_id")
     private Rota rota;
 
-    public PlanoDeVoo(String idVoo, LocalDate data, float altitude, Rota rota, float velCruzeiro) {
+
+    public PlanoDeVoo(String idVoo, LocalDate data, float altitude, Rota rota, float velCruzeiro, float horarioPartida, Aeronave aeronave) {
         this.idVoo = idVoo;
         this.data = data;
         this.altitude = altitude;
         this.velCruzeiro = velCruzeiro;
+        this.liberarRota = false;
     }
 
     public PlanoDeVoo() {
@@ -53,6 +59,14 @@ public class PlanoDeVoo implements Serializable {
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
+    }
+
+    public float getHorarioPartida() {
+        return horarioPartida;
+    }
+
+    public void setHorarioPartida(float horarioPartida) {
+        this.horarioPartida = horarioPartida;
     }
 
     public LocalDate getData() {
@@ -111,5 +125,9 @@ public class PlanoDeVoo implements Serializable {
                 ", altitude=" + altitude +
                 ", velCruzeiro=" + velCruzeiro +
                 '}';
+    }
+
+    public void setLiberado(boolean b) {
+        this.liberarRota = b;
     }
 }

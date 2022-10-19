@@ -25,6 +25,15 @@ public class PlanoDeVooContoller {
         return new ResponseEntity<List<PlanoDeVoo>>(this.servicoPlanoDeVoo.getPlanoDeVoos(), HttpStatus.OK);
     }
 
+    @GetMapping("/liberar-plano/{idVoo}")
+    public ResponseEntity<PlanoDeVoo> liberarPlano(@PathVariable int idVoo) {
+        try {
+            return new ResponseEntity<PlanoDeVoo>(this.servicoPlanoDeVoo.liberarPlano(idVoo), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+    }
+
     @GetMapping("/findByIdVoo/{idVoo}")
     public ResponseEntity<PlanoDeVoo> findById(@PathVariable int idVoo) {
         return new ResponseEntity<PlanoDeVoo>(this.servicoPlanoDeVoo

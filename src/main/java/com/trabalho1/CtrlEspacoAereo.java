@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.trabalho1" })
 @EntityScan(basePackages = { "com.trabalho1" })
 public class CtrlEspacoAereo {
 

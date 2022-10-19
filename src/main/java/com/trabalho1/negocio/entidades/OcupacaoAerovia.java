@@ -33,6 +33,9 @@ public class OcupacaoAerovia {
         this.slotHorario = slotHorario;
     }
 
+    public OcupacaoAerovia(LocalDate date, Aerovia aerovia, int altitude, int slot) {
+    }
+
     public int getId() {
         return id;
     }
