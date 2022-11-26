@@ -27,7 +27,7 @@ insert into rotas (nome, aerovia_id) values ('C', 3);
 insert into rotas (nome, aerovia_id) values ('D', 4);
 insert into rotas (nome, aerovia_id) values ('E', 5);
 
-insert into planos_de_voo ( id_voo , vel_cruzeiro , altitude , data , aeronave_id , rota_id ) values ('fligthSecurity', 800, 30000, '2004-12-19', 1,2);
-insert into planos_de_voo ( id_voo , vel_cruzeiro , altitude , data , aeronave_id , rota_id ) values ('fligth', 700, 19000, '2004-10-13', 2,1);
-insert into planos_de_voo ( id_voo , vel_cruzeiro , altitude , data , aeronave_id , rota_id ) values ('fligthGO', 1000, 31000, '2004-11-10', 3,2);
-insert into planos_de_voo ( id_voo , vel_cruzeiro , altitude , data , aeronave_id , rota_id ) values ('fligthGOAL', 600, 32000, '2004-09-19', 3,1);
+insert into planos_de_voo ( id_voo , vel_cruzeiro , altitude , data , aeronave_id , rota_id , horario_partida ) values ('fligthSecurity', 800, 30000, '2004-12-19', 1,2, 12);
+insert into planos_de_voo ( id_voo , vel_cruzeiro , altitude , data , aeronave_id , rota_id , horario_partida ) values ('fligth', 700, 19000, '2004-10-13', 2,1, 04);
+insert into planos_de_voo ( id_voo , vel_cruzeiro , altitude , data , aeronave_id , rota_id , horario_partida ) values ('fligthGO', 1000, 31000, '2004-11-10', 3,2, 06);
+insert into planos_de_voo ( id_voo , vel_cruzeiro , altitude , data , aeronave_id , rota_id , horario_partida ) values ('fligthGOAL', 600, 32000, '2004-09-19', 3,1, 19);
