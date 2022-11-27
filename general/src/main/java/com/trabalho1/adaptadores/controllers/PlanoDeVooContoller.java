@@ -32,4 +32,22 @@ public class PlanoDeVooContoller {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "voo não enontrado")),
                 HttpStatus.OK);
     }
+
+    @GetMapping("/liberar-plano/{idVoo}")
+    public ResponseEntity<PlanoDeVoo> liberarPlano(@PathVariable int idVoo) {
+        try {
+            return new ResponseEntity<PlanoDeVoo>(this.servicoPlanoDeVoo.liberarPlano(idVoo), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+    }
+    
+    @GetMapping("/delete/{id}")
+    public ResponseEntity<Boolean> deletarPlano(@PathVariable int id) {
+        try {
+            return new ResponseEntity<Boolean>(this.servicoPlanoDeVoo.deletePlanoDeVoo(id), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+    }
 }

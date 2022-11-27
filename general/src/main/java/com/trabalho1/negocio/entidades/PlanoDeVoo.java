@@ -130,4 +130,8 @@ public class PlanoDeVoo implements Serializable {
     public void setLiberado(boolean b) {
         this.liberarRota = b;
     }
+
+    public Boolean getLiberarRota() {
+        return liberarRota;
+    }
 }
